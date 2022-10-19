@@ -132,6 +132,14 @@ let g:any_jump_disable_default_keybindings = 1
 " Normal mode: Jump to definition under cursor
 nnoremap <C-o> :AnyJump<Cr>
 
+" coc config
+" <CR> to select current autocomplete
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" use tab to navigate completion list
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+
 " ctrlp
 nmap <silent> <C-p> :CtrlP<CR>
 " default ignore
