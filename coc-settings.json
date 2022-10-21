@@ -1,0 +1,15 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "markdown",
+    "html",
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true,
+  "codeLens.enable": true,
+  "diagnostic.displayByAle": true
+}

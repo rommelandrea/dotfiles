@@ -1,21 +1,29 @@
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
   " Visualization
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  Plug 'https://github.com/tomasiser/vim-code-dark'
-  Plug 'https://github.com/itchyny/lightline.vim'
-  " Plug 'https://github.com/itchyny/vim-gitbranch'
-  Plug 'https://github.com/tpope/vim-fugitive'
+  " Plug 'tomasiser/vim-code-dark'
+  " Plug 'itchyny/lightline.vim'
+  " Plug 'itchyny/vim-gitbranch'
+  Plug 'morhetz/gruvbox'
+  Plug 'vim-airline/vim-airline'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround' 
   Plug 'airblade/vim-gitgutter'
 
   " Utils & format
   Plug 'editorconfig/editorconfig-vim'
 
-  Plug 'https://github.com/pangloss/vim-javascript'
+  Plug 'pangloss/vim-javascript'
 
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-commentary', {'on': '<Plug>Commentary'}
 
-  Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+  " Plug 'neovim/nvim-lspconfig'
+
+  Plug 'ctrlpvim/ctrlp.vim'
 
   " Fzf finder
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -63,7 +71,7 @@ endif
 " nnoremap <leader>v :e $MYVIMRC<CR>
 
 " Theme 
-colorscheme codedark
+colorscheme gruvbox
 
 " Lightline + GitBranch
 " let g:lightline = {
@@ -76,19 +84,23 @@ colorscheme codedark
 "   \  },
 "   \  'colorscheme': 'codedark',
 "   \  }
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ,
-      \             [ 'venv', 'readonly'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'venv': 'virtualenv#statusline'
-      \ },
-      \ } 
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ,
+"       \             [ 'venv', 'readonly'] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'fugitive#head',
+"       \   'venv': 'virtualenv#statusline'
+"       \ },
+"       \ } 
 
+" air-line
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -138,6 +150,11 @@ nmap <silent> <C-p> :CtrlP<CR>
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build)|(\.(swp|ico|git|svn))$'
 " ignore what is inside the .gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Tabs
+nnoremap <S-Tab> gT
+nnoremap <Tab> gt
+nnoremap <silent> <S-t> :tabnew<CR>
 
 " Font
 set encoding=utf8
